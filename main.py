@@ -30,6 +30,7 @@ def bisection(a, b, p, epsilon):
             b = c
         else:
             a = c
+        #print('a:', a, ' | b: ', b)
     return ((a + b) / 2, k)
 
 def chord(a, b, p, epsilon):
@@ -41,7 +42,7 @@ def chord(a, b, p, epsilon):
             b = c
         else:
             a = c
-        #print('\n')
+        #print('a:', a, ' | b: ', b)
         if abs( func(p, c)) < epsilon:
             return c, k
         
@@ -55,6 +56,7 @@ def newton(a, b, p, epsilon):
             b = x
         else:
             a = x
+        #print('a:', a, ' | b: ', b)
     return x, k
 
 def calculate(intervals, epsilon, p):
@@ -63,18 +65,18 @@ def calculate(intervals, epsilon, p):
         
         a = bisection(intervals[i][0], intervals[i][1], p, epsilon)
         print(a[0])
-        print('Amount:', a[1])
+        print('Метод бісекцій. Ітерацій:', a[1])
         
-        '''b = chord(intervals[i][0], intervals[i][1], p, epsilon)
+        b = chord(intervals[i][0], intervals[i][1], p, epsilon)
         print(b[0])
-        print('Amount:', b[1])'''
+        print('Метод хорд. Ітерацій:', b[1])
         
-        '''c = newton(intervals[i][0], intervals[i][1], p, epsilon)
+        c = newton(intervals[i][0], intervals[i][1], p, epsilon)
         print(c[0])
-        print('Amount:', c[1])'''
+        print('Метод Ньютона. Ітерацій:', c[1])
 
 def main():
-    epsilon = pow(10, -6)
+    epsilon = pow(10, -5)
     p = [2, -2, -4, 0, 2, 1]
     intervals = ((-2.4142, -0.3864), (0.3864, 1), (1,3))
     calculate(intervals, epsilon, p)
